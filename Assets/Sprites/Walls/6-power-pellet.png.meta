@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: dd58370f0b7feb34ba5dbfbce98cc7db
+guid: 1e8e4a29271d6cd48a5f10a75ed88da8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7823965121065191569
-    second: 6-power-pellet_0
+      213: -670450948639728117
+    second: 6-power-pellet 1_0
   - first:
-      213: 1292911669745824733
-    second: 6-power-pellet_1
-  - first:
-      213: 2075437499670173374
-    second: 6-power-pellet_2
-  - first:
-      213: 556021006157033651
-    second: 6-power-pellet_3
+      213: 7370387644416467135
+    second: 6-power-pellet 1_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 6-power-pellet_0
+      name: 6-power-pellet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,35 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 198032013de449c60800000000000000
-      internalID: 7823965121065191569
+      spriteID: b0e51071a6412b6f0800000000000000
+      internalID: -670450948639728117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 6-power-pellet_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd33821405851f110800000000000000
-      internalID: 1292911669745824733
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6-power-pellet_2
+      name: 6-power-pellet 1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -159,29 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb69d59e86f6dcc10800000000000000
-      internalID: 2075437499670173374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 6-power-pellet_3
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b035afb82267b700800000000000000
-      internalID: 556021006157033651
+      spriteID: fb02f5a3380e84660800000000000000
+      internalID: 7370387644416467135
       vertices: []
       indices: 
       edges: []
