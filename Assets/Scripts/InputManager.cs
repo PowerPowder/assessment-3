@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
     private Tweener tweener;
 
     private Animator animator;
+    private AudioSource moveSound;
 
     List<Vector3> tweenLocations = new List<Vector3>();
     int i = 0;
@@ -20,6 +21,7 @@ public class InputManager : MonoBehaviour
     {
         animator = item.GetComponent<Animator>();
         tweener = GetComponent<Tweener>();
+        moveSound = item.GetComponent<AudioSource>();
 
         tweenLocations.Add(new Vector3(-1.2f, 2.16f, 0.0f));
         tweenLocations.Add(new Vector3(-1.2f, 1.50f, 0.0f));
@@ -38,7 +40,7 @@ public class InputManager : MonoBehaviour
             }
 
             tweener.AddTween(item.transform, item.transform.position, tweenLocations[i], 1f);
-            resetItem();
+            item.transform.eulerAngles = new Vector3(0f, 0f, 0f);
 
             switch (currentDirection)
             {
@@ -74,10 +76,5 @@ public class InputManager : MonoBehaviour
                     break;
             }
         }
-    }
-
-    void resetItem()
-    {
-        item.transform.eulerAngles = new Vector3(0f, 0f, 0f);
     }
 }
