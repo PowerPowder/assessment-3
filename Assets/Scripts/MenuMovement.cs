@@ -27,7 +27,7 @@ public class MenuMovement : MonoBehaviour
         for (int i = 0; i < objects.Length; i++)
             tweeners[i] = objects[i].GetComponent<Tweener>();
 
-        for (int i = 0; i < tweeners.Length; i++)
+        for (int i = 1; i < tweeners.Length; i++)
         {
             float duration = 0.5f * (objects[0].transform.position.x - objects[i].transform.position.x);
             tweeners[i].AddTween(objects[i].transform, objects[i].transform.position, points[0], duration);
