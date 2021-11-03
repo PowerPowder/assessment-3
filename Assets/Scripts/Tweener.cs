@@ -47,7 +47,6 @@ public class Tweener : MonoBehaviour
     {
         foreach (Tween tween in activeTweens)
         {
-            Debug.Log(tween + " " + target);
             if (tween.Target.Equals(target))
                 return true;
         }

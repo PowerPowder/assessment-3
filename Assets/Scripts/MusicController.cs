@@ -30,7 +30,6 @@ public class MusicController : MonoBehaviour
     {
         if (prevTrack != currentTrack)
         {
-            Debug.Log("boi");
             switch (currentTrack)
             {
                 case Music.Normal:
