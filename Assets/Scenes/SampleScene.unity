@@ -9876,7 +9876,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406775293}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.754, y: -0.022, z: 0}
+  m_LocalPosition: {x: 0.24599998, y: 0.098, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9892,7 +9892,7 @@ Animator:
   m_GameObject: {fileID: 406775293}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 05ada1e3a7d4aeb42ab6a1452f9878f0, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -19899,7 +19899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 739650392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.774, y: 0.024, z: 0}
+  m_LocalPosition: {x: -0.18599986, y: 0.14399998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19915,7 +19915,7 @@ Animator:
   m_GameObject: {fileID: 739650392}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 872fd80e7e856634f9a1edcd24936862, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -36620,7 +36620,7 @@ Animator:
   m_GameObject: {fileID: 1460921999}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b044b1a1e57b5c248bb93d46e24943af, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -38540,7 +38540,7 @@ Animator:
   m_GameObject: {fileID: 1527445765}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3d8550a9a7896444d9107a5a50250627, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -38608,7 +38608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527445765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: 0.014, z: 0}
+  m_LocalPosition: {x: -0.19399999, y: -0.126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48564,7 +48564,7 @@ Animator:
   m_GameObject: {fileID: 1843699914}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1a5486be444b40748b511c0bc283653a, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -48632,7 +48632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843699914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.014, z: 0}
+  m_LocalPosition: {x: 0.24099998, y: -0.11799999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52010,7 +52010,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1992057925}
   - component: {fileID: 1992057924}
-  - component: {fileID: 1992057923}
   m_Layer: 0
   m_Name: TweenController
   m_TagString: Untagged
@@ -52018,19 +52017,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1992057923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992057922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2d2653de32b2d4fb4cde7c91188c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 1460921999}
 --- !u!114 &1992057924
 MonoBehaviour:
   m_ObjectHideFlags: 0
