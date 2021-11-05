@@ -43635,7 +43635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee8cc54eb54fa44883ce7fa7e5d0c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cherryPrefab: {fileID: 0}
+  cherryPrefab: {fileID: 5770391631254851826, guid: a9e107d9f8f9a4e41b42de760c1a2248, type: 3}
 --- !u!4 &1500626071
 Transform:
   m_ObjectHideFlags: 0
