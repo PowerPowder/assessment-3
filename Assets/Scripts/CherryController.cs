@@ -66,4 +66,9 @@ public class CherryController : MonoBehaviour
         Vector3 endPoint = Vector3.zero - currentCherry.transform.position;
         tweener.AddTween(currentCherry.transform, currentCherry.transform.position, endPoint, 20f);
     }
+
+    public void StopCherry()
+    {
+        tweener.clearTweens();
+    }
 }

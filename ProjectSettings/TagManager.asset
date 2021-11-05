@@ -8,6 +8,7 @@ TagManager:
   - Dust
   - BumpWall
   - HUDController
+  - CherryController
   layers:
   - Default
   - TransparentFX
