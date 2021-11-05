@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class CherryController : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject cherryPrefab;
+    private GameObject currentCherry;
+
     private Tweener tweener;
 
     private float half_x, half_y;
-    private bool spawn = true;
 
     void Start()
     {
@@ -17,44 +20,31 @@ public class CherryController : MonoBehaviour
         half_x = camera.aspect * camera.orthographicSize + 0.25f;
         half_y = camera.orthographicSize + 0.25f;
 
-        StartCoroutine(test());
+        StartCoroutine(spawnAndMoveCherry());
     }
 
     void Update()
     {
-        /*
-        if (spawn)
+        if (currentCherry != null && tweener.waiting())
         {
-            spawn = false;
-            Debug.Log("boi");
-            StartCoroutine(SpawnCherry());
+            Destroy(currentCherry);
+            currentCherry = null;
         }
-
-        Debug.Log(tweener.waiting());
-        //if (tweener.waiting())
-            //spawn = true;
-        */
     }
 
-    private IEnumerator test()
+    private IEnumerator spawnAndMoveCherry()
     {
         while (true)
         {
             yield return new WaitForSeconds(10f);
 
+            currentCherry = Instantiate(cherryPrefab);
             randomLocation();
 
             // offset the tween time
             yield return new WaitForSeconds(20f);
-
             yield return null;
         }
-    }
-
-    private IEnumerator SpawnCherry()
-    {
-        yield return new WaitForSeconds(10f);
-        randomLocation();
     }
 
     private void randomLocation()
@@ -66,13 +56,13 @@ public class CherryController : MonoBehaviour
 
         switch (side)
         {
-            case 0: transform.position = new Vector3(new_x, half_y, 1); break;
-            case 1: transform.position = new Vector3(half_x, new_y, 1); break;
-            case 2: transform.position = new Vector3(new_x, -half_y, 1); break;
-            case 3: transform.position = new Vector3(-half_x, new_y, 1); break;
+            case 0: currentCherry.transform.position = new Vector3(new_x, half_y, 1); break;
+            case 1: currentCherry.transform.position = new Vector3(half_x, new_y, 1); break;
+            case 2: currentCherry.transform.position = new Vector3(new_x, -half_y, 1); break;
+            case 3: currentCherry.transform.position = new Vector3(-half_x, new_y, 1); break;
         }
 
-        Vector3 endPoint = Vector3.zero - transform.position;
-        tweener.AddTween(transform, transform.position, endPoint, 20f);
+        Vector3 endPoint = Vector3.zero - currentCherry.transform.position;
+        tweener.AddTween(currentCherry.transform, currentCherry.transform.position, endPoint, 20f);
     }
 }
