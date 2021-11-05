@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class PacStudentController : MonoBehaviour
 {
-    enum PacmanSound { Move, EatPellet }
+    enum PacmanSound { Move, EatPellet, HitWall }
 
     [SerializeField]
     private AudioClip moveSound;
     [SerializeField]
     private AudioClip eatPelletSound;
+    [SerializeField]
+    private AudioClip hitWallSound;
 
     private Tweener tweener;
     private AudioSource audioSource;
     private Animator animator;
+
     private ParticleSystem dust;
+    private ParticleSystem bumpWall;
 
     private KeyCode lastInput;
 
     private bool startedMoving = false;
+    private bool canHitWall = false;
 
     // RightAlt is acting as null
     private KeyCode currentInput = KeyCode.RightAlt;
@@ -33,8 +38,8 @@ public class PacStudentController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         dust = GameObject.FindGameObjectWithTag("Dust").GetComponent<ParticleSystem>();
-
-        //getMap(pos[0], pos[1]);
+        bumpWall = GameObject.FindGameObjectWithTag("BumpWall").GetComponent<ParticleSystem>();
+        bumpWall.Stop();
     }
 
     void Update() 
@@ -81,6 +86,8 @@ public class PacStudentController : MonoBehaviour
                     lastInput = currentInput;
                     playSoundClip = true;
                     animationInput = currentInput;
+
+                    canHitWall = true;
                 }
                 else if (isWalkable(pos[0] + old_x, pos[1] + old_y))
                 {
@@ -96,6 +103,14 @@ public class PacStudentController : MonoBehaviour
                     pos[1] += old_y;
                     playSoundClip = true;
                     animationInput = lastInput;
+
+                    canHitWall = true;
+                }
+                else if (canHitWall)
+                {
+                    bumpWall.Play();
+                    playPacmanSound(PacmanSound.HitWall);
+                    canHitWall = false;
                 }
             }
 
@@ -135,8 +150,10 @@ public class PacStudentController : MonoBehaviour
     {
         if (p == PacmanSound.EatPellet)
             audioSource.clip = eatPelletSound;
-        else
+        else if (p == PacmanSound.Move)
             audioSource.clip = moveSound;
+        else
+            audioSource.clip = hitWallSound;
 
         audioSource.enabled = true;
         audioSource.Play();

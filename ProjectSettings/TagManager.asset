@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuitButton
   - Dust
+  - BumpWall
   layers:
   - Default
   - TransparentFX
