@@ -78,39 +78,45 @@ public class PacStudentController : MonoBehaviour
             KeyCode animationInput = KeyCode.RightAlt;
             if (startedMoving)
             {
-                if ((x != 0 || y != 0) && isWalkable(pos[0] + x, pos[1] + y))
+                // i think the off by one error is caused by setting pos in teleport
+                if ((pos[0] + x == 0 || pos[0] + x == 28) && (pos[1] + y == 14 || pos[1] + y == 15))
+                    teleport(pos[0] + x);
+                else
                 {
-                    tweener.AddTween(transform, transform.position, newPos, 0.35f);
-                    pos[0] += x;
-                    pos[1] += y;
-                    lastInput = currentInput;
-                    playSoundClip = true;
-                    animationInput = currentInput;
+                    if ((x != 0 || y != 0) && isWalkable(pos[0] + x, pos[1] + y))
+                    {
+                        tweener.AddTween(transform, transform.position, newPos, 0.35f);
+                        pos[0] += x;
+                        pos[1] += y;
+                        lastInput = currentInput;
+                        playSoundClip = true;
+                        animationInput = currentInput;
 
-                    canHitWall = true;
-                }
-                else if (isWalkable(pos[0] + old_x, pos[1] + old_y))
-                {
-                    newPos = transform.position;
+                        canHitWall = true;
+                    }
+                    else if (isWalkable(pos[0] + old_x, pos[1] + old_y))
+                    {
+                        newPos = transform.position;
 
-                    direction = getDirection(lastInput);
-                    if (lastInput == KeyCode.W || lastInput == KeyCode.S)
-                        direction.y *= -1f;
-                    newPos += direction * unit;
+                        direction = getDirection(lastInput);
+                        if (lastInput == KeyCode.W || lastInput == KeyCode.S)
+                            direction.y *= -1f;
+                        newPos += direction * unit;
 
-                    tweener.AddTween(transform, transform.position, newPos, 0.35f);
-                    pos[0] += old_x;
-                    pos[1] += old_y;
-                    playSoundClip = true;
-                    animationInput = lastInput;
+                        tweener.AddTween(transform, transform.position, newPos, 0.35f);
+                        pos[0] += old_x;
+                        pos[1] += old_y;
+                        playSoundClip = true;
+                        animationInput = lastInput;
 
-                    canHitWall = true;
-                }
-                else if (canHitWall)
-                {
-                    bumpWall.Play();
-                    playPacmanSound(PacmanSound.HitWall);
-                    canHitWall = false;
+                        canHitWall = true;
+                    }
+                    else if (canHitWall)
+                    {
+                        bumpWall.Play();
+                        playPacmanSound(PacmanSound.HitWall);
+                        canHitWall = false;
+                    }
                 }
             }
 
@@ -172,6 +178,26 @@ public class PacStudentController : MonoBehaviour
         }
 
         return direction;
+    }
+
+    private void teleport(int x)
+    {
+        if (x == 0)
+        {
+            tweener.clearTweens();
+            Vector3 newPos = transform.position;
+            newPos.x = (14 * 0.16f) + 0.08f; // a unit is 0.16
+            transform.position = newPos;
+            pos[0] = 28;
+        }
+        else if (x == 28)
+        {
+            tweener.clearTweens();
+            Vector3 newPos = transform.position;
+            newPos.x = (-14 * 0.16f) - 0.08f; // a unit is 0.16
+            transform.position = newPos;
+            pos[0] = 1;
+        }
     }
 
     private bool isWalkable(int x, int y)
