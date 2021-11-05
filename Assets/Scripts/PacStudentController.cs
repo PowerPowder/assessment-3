@@ -14,6 +14,7 @@ public class PacStudentController : MonoBehaviour
     private Tweener tweener;
     private AudioSource audioSource;
     private Animator animator;
+    private ParticleSystem dust;
 
     private KeyCode lastInput;
 
@@ -30,6 +31,8 @@ public class PacStudentController : MonoBehaviour
         tweener = GetComponent<Tweener>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+
+        dust = GameObject.FindGameObjectWithTag("Dust").GetComponent<ParticleSystem>();
 
         getMap(pos[0], pos[1]);
     }
@@ -50,6 +53,8 @@ public class PacStudentController : MonoBehaviour
 
         if (tweener.waiting())
         {
+            dust.Stop();
+
             Vector3 newPos = transform.position;
             float unit = 0.16f;
 
@@ -96,6 +101,8 @@ public class PacStudentController : MonoBehaviour
 
             if (playSoundClip && (pos[0] != old_pos[0] || pos[1] != old_pos[1]))
             {
+                dust.Play();
+
                 int pos_item = levelMap[pos[1], pos[0]];
 
                 PacmanSound sound;
@@ -119,8 +126,9 @@ public class PacStudentController : MonoBehaviour
             else if (animationInput == KeyCode.RightAlt)
                 animator.Play("Idle");
         }
-            old_pos[0] = pos[0];
-            old_pos[1] = pos[1];
+
+        old_pos[0] = pos[0];
+        old_pos[1] = pos[1];
     }
 
     private void playPacmanSound(PacmanSound p)
