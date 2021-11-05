@@ -186,7 +186,7 @@ public class PacStudentController : MonoBehaviour
         {
             tweener.clearTweens();
             Vector3 newPos = transform.position;
-            newPos.x = (14 * 0.16f) + 0.08f; // a unit is 0.16
+            newPos.x = (14 * 0.16f); // a unit is 0.16
             transform.position = newPos;
             pos[0] = 28;
         }
@@ -194,7 +194,7 @@ public class PacStudentController : MonoBehaviour
         {
             tweener.clearTweens();
             Vector3 newPos = transform.position;
-            newPos.x = (-14 * 0.16f) - 0.08f; // a unit is 0.16
+            newPos.x = (-14 * 0.16f) + 0.24f; // a unit is 0.16
             transform.position = newPos;
             pos[0] = 1;
         }

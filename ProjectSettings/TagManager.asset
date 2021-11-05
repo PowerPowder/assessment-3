@@ -9,6 +9,11 @@ TagManager:
   - BumpWall
   - HUDController
   - CherryController
+  - Ghost1
+  - Ghost2
+  - Ghost3
+  - Ghost4
+  - MusicController
   layers:
   - Default
   - TransparentFX
