@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class PacStudentController : MonoBehaviour
 {
+    enum PacmanSound { Move, EatPellet }
+
+    [SerializeField]
+    private AudioClip moveSound;
+    [SerializeField]
+    private AudioClip eatPelletSound;
+
     private Tweener tweener;
+    private AudioSource audioSource;
+    private Animator animator;
+
     private KeyCode lastInput;
+
+    private bool startedMoving = false;
 
     // RightAlt is acting as null
     private KeyCode currentInput = KeyCode.RightAlt;
     
     private int[] pos = { 1, 1 };
+    private int[] old_pos = { 1, 1 };
 
     void Start()
     {
         tweener = GetComponent<Tweener>();
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+
         getMap(pos[0], pos[1]);
     }
 
@@ -28,6 +44,9 @@ public class PacStudentController : MonoBehaviour
             currentInput = KeyCode.A;
         if (Input.GetKeyDown(KeyCode.D))
             currentInput = KeyCode.D;
+
+        if (!startedMoving && currentInput != KeyCode.RightAlt)
+            startedMoving = true;
 
         if (tweener.waiting())
         {
@@ -45,27 +64,74 @@ public class PacStudentController : MonoBehaviour
             int old_x = (int)getDirection(lastInput).x;
             int old_y = (int)getDirection(lastInput).y;
 
-            if ((x != 0 || y != 0) && isWalkable(pos[0] + x, pos[1] + y))
+            bool playSoundClip = false;
+            KeyCode animationInput = KeyCode.RightAlt;
+            if (startedMoving)
             {
-                tweener.AddTween(transform, transform.position, newPos, 0.25f);
-                pos[0] += x;
-                pos[1] += y;
-                lastInput = currentInput;
+                if ((x != 0 || y != 0) && isWalkable(pos[0] + x, pos[1] + y))
+                {
+                    tweener.AddTween(transform, transform.position, newPos, 0.35f);
+                    pos[0] += x;
+                    pos[1] += y;
+                    lastInput = currentInput;
+                    playSoundClip = true;
+                    animationInput = currentInput;
+                }
+                else if (isWalkable(pos[0] + old_x, pos[1] + old_y))
+                {
+                    newPos = transform.position;
+
+                    direction = getDirection(lastInput);
+                    if (lastInput == KeyCode.W || lastInput == KeyCode.S)
+                        direction.y *= -1f;
+                    newPos += direction * unit;
+
+                    tweener.AddTween(transform, transform.position, newPos, 0.35f);
+                    pos[0] += old_x;
+                    pos[1] += old_y;
+                    playSoundClip = true;
+                    animationInput = lastInput;
+                }
             }
-            else if (isWalkable(pos[0] + old_x, pos[1] + old_y))
+
+            if (playSoundClip && (pos[0] != old_pos[0] || pos[1] != old_pos[1]))
             {
-                newPos = transform.position;
+                int pos_item = levelMap[pos[1], pos[0]];
 
-                direction = getDirection(lastInput);
-                if (lastInput == KeyCode.W || lastInput == KeyCode.S)
-                    direction.y *= -1f;
-                newPos += direction * unit;
+                PacmanSound sound;
+                if (pos_item == 5 || pos_item == 6)
+                    sound = PacmanSound.EatPellet;
+                else
+                    sound = PacmanSound.Move;
 
-                tweener.AddTween(transform, transform.position, newPos, 0.25f);
-                pos[0] += old_x;
-                pos[1] += old_y;
+                playPacmanSound(sound);
             }
+
+            if ((pos[0] != old_pos[0] || pos[1] != old_pos[1]) && animationInput != KeyCode.RightAlt)
+            {
+                gameObject.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                switch (animationInput)
+                {
+                    case KeyCode.W: case KeyCode.S: animator.Play("UpAnim"); break;
+                    case KeyCode.A: case KeyCode.D: animator.Play("RightAnim"); break;
+                }
+            }
+            else if (animationInput == KeyCode.RightAlt)
+                animator.Play("Idle");
         }
+            old_pos[0] = pos[0];
+            old_pos[1] = pos[1];
+    }
+
+    private void playPacmanSound(PacmanSound p)
+    {
+        if (p == PacmanSound.EatPellet)
+            audioSource.clip = eatPelletSound;
+        else
+            audioSource.clip = moveSound;
+
+        audioSource.enabled = true;
+        audioSource.Play();
     }
 
     private Vector3 getDirection(KeyCode keyCode)

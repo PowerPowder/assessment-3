@@ -37506,9 +37506,9 @@ GameObject:
   - component: {fileID: 1460922002}
   - component: {fileID: 1460922001}
   - component: {fileID: 1460922000}
-  - component: {fileID: 1460922003}
   - component: {fileID: 1460922004}
   - component: {fileID: 1460922005}
+  - component: {fileID: 1460922003}
   m_Layer: 0
   m_Name: Pacman
   m_TagString: Untagged
@@ -37526,7 +37526,7 @@ Animator:
   m_GameObject: {fileID: 1460921999}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b044b1a1e57b5c248bb93d46e24943af, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -37610,7 +37610,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2a44c65a196c070489504cdf51e78de2, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -37708,6 +37708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e488dc130196d4d8772a628d5f0764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSound: {fileID: 8300000, guid: 2a44c65a196c070489504cdf51e78de2, type: 3}
+  eatPelletSound: {fileID: 8300000, guid: 94e881cf9af7f2247a1d23d65419595e, type: 3}
 --- !u!114 &1460922005
 MonoBehaviour:
   m_ObjectHideFlags: 0

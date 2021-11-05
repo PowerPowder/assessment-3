@@ -11,7 +11,6 @@ public class InputManager : MonoBehaviour
     private Animator animator;
     private AudioSource moveSound;
 
-    List<Vector3> tweenLocations = new List<Vector3>();
     int i = 0;
 
     enum Direction { LEFT, RIGHT, UP, DOWN }
@@ -22,11 +21,6 @@ public class InputManager : MonoBehaviour
         animator = item.GetComponent<Animator>();
         tweener = GetComponent<Tweener>();
         moveSound = item.GetComponent<AudioSource>();
-
-        tweenLocations.Add(new Vector3(-1.2f, 2.16f, 0.0f));
-        tweenLocations.Add(new Vector3(-1.2f, 1.50f, 0.0f));
-        tweenLocations.Add(new Vector3(-2.0f, 1.50f, 0.0f));
-        tweenLocations.Add(new Vector3(-2.0f, 2.16f, 0.0f));
     }
 
     void Update()
@@ -39,7 +33,7 @@ public class InputManager : MonoBehaviour
                 currentDirection = Direction.RIGHT;
             }
 
-            tweener.AddTween(item.transform, item.transform.position, tweenLocations[i], 1f);
+            //tweener.AddTween(item.transform, item.transform.position, tweenLocations[i], 1f);
             item.transform.eulerAngles = new Vector3(0f, 0f, 0f);
 
             switch (currentDirection)
