@@ -34,7 +34,7 @@ public class PacStudentController : MonoBehaviour
 
         dust = GameObject.FindGameObjectWithTag("Dust").GetComponent<ParticleSystem>();
 
-        getMap(pos[0], pos[1]);
+        //getMap(pos[0], pos[1]);
     }
 
     void Update() 
